@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>BG color</title>
+<style>
+#btn{
+ display:block;
+ height:5rem;
+ width:10rem;
+ border:1px solid #000;
+ border-radius:5px;
+ background:transparent;
+ color:#000;
+ font-size:1.5rem;
+ margin:25% auto;
+ cursor:pointer;
+ transition:all .5s ease;
+}
+#btn:hover{
+ background-color:aqua;
+}
+</style>
+</head>
+<body>
+<button id="btn" onClick="changeBg()">Click Me</button>
+<script>
+ let btn = document.getElementById("btn");
+ let changeBg = () =>{
+  let bgcolor='#'+Math.floor(Math.random()*10000000).toString(16);
+  document.body.style.background=bgcolor;
+ }
+</script>
+</body>
+</html>

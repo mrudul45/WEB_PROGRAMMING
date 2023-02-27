@@ -1,0 +1,115 @@
+<html>
+<head>
+<title>Form Validation</title>
+<style>
+ .form_container{
+  height:35rem;
+  width:25rem;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  margin:5% auto;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+ }
+ .input input{
+ height:2.5rem;
+ width:15rem;
+ margin:20px;
+ font-size:1rem;
+ border-radius:5px;
+ }
+ #btn{
+  height:2.5rem;
+  width:15rem;
+  background:transparent;
+  border:2px solid blue;
+  color:blue;
+  font-size:1.2rem;
+  border-radius:5px;
+  cursor:pointer;
+ }
+</style>
+</head>
+<body>
+<form name="form" method="POST" onsubmit="return validateForm()">
+  <div class="form_container">
+  <h2>Registration Form</h2>
+    <div class="input">
+    <input type="text" name="uname" placeholder="Enter your Name">
+    </div>
+     <div class="input">
+    <input type="text" name="email" placeholder="Enter your EmailId">
+    </div>
+     <div class="input">
+    <input type="text" name="phone" placeholder="Enter your Phone Number">
+    </div>
+    <div class="input">
+    <input type="password" name="password" placeholder="Enter Password">
+    </div>
+    <div class="input">
+    <input type="password" name="cpassword" placeholder="Confirm Password">
+    </div>
+    <input type="submit" id="btn" value="Submit">
+  </div>
+</form>
+<script>
+  function validateForm() {
+            var name = document.form.uname.value;
+            var phone = document.form.phone.value;
+            var email = document.form.email.value;
+            var password = document.form.password.value;
+            var cpassword = document.form.cpassword.value;
+            var re = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+            var ren = /[0-9!@#$%^&*]/;
+            var reg = /^[a-zA-Z0-9.! #$%&'*+/=? ^_`{|}~-]+@[a-zA-Z0-9-]+(?:\. [a-zA-Z0-9-]+)*$/;
+            if (name == "") {
+                alert("Enter Name !!");
+                document.form.uname.focus(); 
+                return false;
+            }
+            else if(ren.test(name)){
+                alert("Enter Valid Name !!"); 
+                document.form.uname.focus();
+                return false;
+            }
+            if (email == "") {
+              alert("Enter EmailId");
+              document.form.email.focus();
+		          return false;
+            }
+            else if(!reg.test(email)){
+              alert("Enter Valid Email Id..!");
+              document.form.email.focus();
+              return false;
+            }
+            if (phone == "") {
+              alert("Enter Phone number");
+              document.form.phone.focus();
+		          return false;
+            }
+            else if (isNaN(phone))
+            {
+              alert("Enter valid Phone number");
+              document.form.phone.focus();
+              return false;
+            }
+            else if (phone.length != 10) {
+              alert("Enter Phone number with 10 digit");
+              document.form.phone.focus();
+              return false;
+            }
+            if (password == "" || password.length < 8 || !re.test(password)) {
+              alert("Enter minimum 8 digit Password !!" + '\n' + "Atleast one Lowercase & uppercase & digti & special charecter must be included");
+              document.form.password.focus();
+              return false;
+            }
+            else if (cpassword == "" || cpassword != password){
+              alert("password must be same..!");
+              document.form.cpassword.focus();
+              return false;
+             }
+        }
+</script>
+</body>
+</html>

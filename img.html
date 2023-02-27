@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>Image</title>
+<style>
+ img{
+  display:block;
+  height:20rem;
+  width:25rem;
+  margin: 10% auto;
+  border-radius:5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  cursor:pointer;
+ }
+ #txt1,#txt2{
+  display:block;
+  text-align:center;
+  font-size:2rem;
+ }
+</style>
+</head>
+<body>
+<img id="img" src="https://assets.bwbx.io/images/users/iqjWHBFdfxIU/i2pMiln8BJrU/v0/1200x-1.jpg" alt="img">
+<div>
+<p id="txt1">Cristiano Ronaldo</p>
+<p id="txt2">Lionel Messi</p>
+</div>
+<script>
+let img = document.getElementById("img");
+let text1 = document.getElementById("txt1");
+let text2 = document.getElementById("txt2");
+txt2.style.display="none";
+img.addEventListener("mouseover",()=>{
+img.src="https://images.news18.com/ibnlive/uploads/2022/12/lionel-messi-ap-4-16701284414x3.jpg";
+ txt2.style.display="block";
+ txt1.style.display="none";
+});
+
+img.addEventListener("mouseout",()=>{
+img.src="https://assets.bwbx.io/images/users/iqjWHBFdfxIU/i2pMiln8BJrU/v0/1200x-1.jpg";
+txt1.style.display="block";
+txt2.style.display="none";
+});
+</script>
+</body>
+</html>
